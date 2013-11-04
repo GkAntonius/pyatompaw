@@ -11,12 +11,12 @@ class AtompawLauncher(object):
     A launcher to run atompaw and moves files.
     """
 
-    _to_parent_functions = ['make', 'run', 'export',
+    _to_parent_functions = ['make', 'run', 'export', 'set_executable',
                             ] + AtompawInput._to_parent_functions
 
     _to_parent_properties = AtompawInput._to_parent_properties
 
-    def __init__(self, rootname=None, namer=None):
+    def __init__(self, rootname=None, namer=None, executable='atompaw'):
 
         # Initialize the namer with a rootname.
         if rootname:
@@ -28,8 +28,14 @@ class AtompawLauncher(object):
 
         self.inputfile = AtompawInput(fname=self.namer.inputname)
 
+        self.executable = executable
+
     def set_input(self, string):
         self.inputfile.content = string.strip() + '\n'
+
+    def set_executable(self, executable):
+        """Set the binary file for atompaw."""
+        self.executable = executable
 
     def make(self):
         """Make the files."""
@@ -37,11 +43,13 @@ class AtompawLauncher(object):
             os.makedirs(self.namer.dirname)
         self.inputfile.write()
 
-    def run(self):
+    def run(self, dry=False):
         """Run atompaw."""
         exdir = abspath(os.curdir)
         os.chdir(self.namer.dirname)
-        command = ' '.join(['atompaw', '<', basename(self.namer.inputname)])
+        command = ' '.join([self.executable,'<',basename(self.namer.inputname)])
+        if dry:
+            return command
         print command
         os.system(command)
         os.chdir(exdir)

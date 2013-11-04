@@ -45,7 +45,7 @@ class AtompawNamer(object):
 
         # The calculation must be in a directory.
         if name == basename(name):
-            name = join(name, 'root')
+            name = join(name, name)
 
         self._rootname = name
 

@@ -138,9 +138,9 @@ class DataFile:
         newerdata = [np.array(col) for col in newdata]
         return newerdata
 
+
 def show_wfn(fname):
 
-    #fig = plt.figure(figsize=(8,6))
     fig = plt.figure()
     ax = fig.add_subplot(111)
     plot_wfn(fname, ax)

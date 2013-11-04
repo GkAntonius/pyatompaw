@@ -4,7 +4,7 @@ from setuptools import find_packages
 setup_args = dict(
       name             = 'pyatompaw',
       version          = '1.3.0',
-     #description      = description,
+      description      = "A python interface for atompaw.",
      #long_description = long_description,
       author           = "Gabriel Antonius",
       author_email     = "gabriel.antonius@gmail.com",
