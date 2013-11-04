@@ -21,6 +21,7 @@ Installing from source
 ----------------------
 
 .. code-block:: bash
+
     python setup.py build
     python setup.py install
 
