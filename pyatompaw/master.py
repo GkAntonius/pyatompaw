@@ -29,6 +29,12 @@ class AtompawMaster(AtompawNamer):
         return super(AtompawMaster, self).make_pseudo_name(
             self.Z, self.Atom_name, *args, **kwargs)
 
+    def export(self, directory=None, pseudo_name=None):
+        if pseudo_name is None and self.has_default_export_name():
+            self.make_pseudo_name()
+        self.launcher.export(directory=directory, pseudo_name=pseudo_name)
+        
+
 # Link functions and properties
 set_child_functions(AtompawMaster, 'plotter', AtompawPlotter)
 set_child_functions(AtompawMaster, 'launcher', AtompawLauncher)

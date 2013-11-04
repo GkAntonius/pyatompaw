@@ -3,74 +3,75 @@ class AtompawInput(object):
     """
     An input for atompaw-3.0.
 
-    Keyword arguments:
+    Keyword arguments
+    -----------------
 
-        Atom_name: str
-            Atomic symbol.
+    Atom_name: str
+        Atomic symbol.
 
-        Z: int
-            Atomic number
+    Z: int
+        Atomic number
 
-        XC_functional: str
+    XC_functional: str
 
-        rel_keyword: str
+    rel_keyword: str
 
-        nucleus_keyword: list
+    nucleus_keyword: list
 
-        grid_keyword: list
+    grid_keyword: list
 
-        logderivrange: list
+    logderivrange: list
 
-        nmax: list (5)
-            The maximum quantum number 'n' for l=0,4.
+    nmax: list (5)
+        The maximum quantum number 'n' for l=0,4.
 
-        occ: 2d list (N, 3)
-            (n, l, occ_nl) for each N empty or partially occupied state.
+    occ: 2d list (N, 3)
+        (n, l, occ_nl) for each N empty or partially occupied state.
 
-        lmax: int
+    lmax: int
 
-        rpaw: float
+    rpaw: float
 
-        rshape: float
+    rshape: float
 
-        rvloc: float
+    rvloc: float
 
-        rcore: float
+    rcore: float
 
-        projector_keyword: str
+    projector_keyword: str
 
-        ps_scheme: str
+    ps_scheme: str
 
-        ortho_scheme: str
+    ortho_scheme: str
 
-        shapefunction: str
+    shapefunction: str
 
-        lloc: int
+    lloc: int
 
-        Eloc: float
+    Eloc: float
 
-        Vloc_scheme: str
+    Vloc_scheme: str
 
-        configurations: 3d list (Ntests, N, 3)
-            Configurations for tests.
-            for each Ntests:
-                for each empty or partially occupied nl state:
-                    (n, l, occ_nl)
+    configurations: 3d list (Ntests, N, 3)
+        Configurations for tests.
+        for each Ntests:
+            for each empty or partially occupied nl state:
+                (n, l, occ_nl)
  
-        output_format: int or str
-            Choices:
-                2, 'abinit'
-                3, 'pwscf'
+    output_format: int or str
+        Choices:
+            2, 'abinit'
+            3, 'pwscf'
 
-        coreWF_keyword: str
+    coreWF_keyword: str
 
-        proj_optim_keyword: str
+    proj_optim_keyword: str
 
-        comp_in_xc_keyword: str
+    comp_in_xc_keyword: str
 
-        reduced_grid_keyword: str
+    reduced_grid_keyword: str
 
-        upf_grid_keywords: str
+    upf_grid_keywords: str
 
 
     """

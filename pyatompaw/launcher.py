@@ -11,7 +11,7 @@ class AtompawLauncher(object):
     A launcher to run atompaw and moves files.
     """
 
-    _to_parent_functions = ['make', 'run', 'export', 'set_executable',
+    _to_parent_functions = ['make', 'run', 'set_executable',
                             ] + AtompawInput._to_parent_functions
 
     _to_parent_properties = AtompawInput._to_parent_properties

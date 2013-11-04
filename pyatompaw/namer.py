@@ -2,12 +2,14 @@
 import os
 from os.path import basename, dirname, join, splitext
 
+_default_export_name = 'pseudo.pawps'
+
 class AtompawNamer(object):
     """A namer for AtomPAW"""
     # The Namer object can NOT have a 'fname' property.
 
     _rootname = 'Atom/root'
-    _export_name = 'pseudo.pawps'
+    _export_name = _default_export_name
     export_directory = '.'
 
     _to_master_functions = ['make_pseudo_name']
@@ -29,6 +31,9 @@ class AtompawNamer(object):
         if basename(name) != name:
             self.export_directory = dirname(name)
         self._export_name = basename(name)
+
+    def has_default_export_name(self):
+        return basename(self.export_name) == _default_export_name
 
     @property
     def rootname(self):
@@ -109,7 +114,8 @@ class AtompawNamer(object):
         keywords = [str(kw) for kw in keywords]
 
         fname = '-'.join([str(Z), symbol])
-        fname = '_'.join([fname]+keywords)
+        if len(keywords) >= 1 and keywords[0]:
+            fname = '_'.join([fname]+keywords)
         fname += '.' + extension.lstrip('.')
         if directory is None:
             directory = self.export_directory    

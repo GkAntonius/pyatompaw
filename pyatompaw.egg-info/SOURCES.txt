@@ -1,4 +1,5 @@
 MANIFEST.in
+README
 setup.py
 examples/Se.py
 pyatompaw/__init__.py
@@ -11,6 +12,7 @@ pyatompaw/util.py
 pyatompaw.egg-info/PKG-INFO
 pyatompaw.egg-info/SOURCES.txt
 pyatompaw.egg-info/dependency_links.txt
+pyatompaw.egg-info/requires.txt
 pyatompaw.egg-info/top_level.txt
 pyatompaw/tests/__init__.py
 pyatompaw/tests/test_namer.py
