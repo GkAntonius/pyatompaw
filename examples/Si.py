@@ -41,5 +41,5 @@ atom.show_wfn()
 atom.plot_logderiv(show=True)
 
 # Export the atomic dataset
-atom.export('./')
+atom.export('.')
 

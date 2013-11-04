@@ -20,8 +20,9 @@ Requirements
 Installing from source
 ----------------------
 
-  python setup.py build
-  python setup.py install
+::
+    python setup.py build
+    python setup.py install
 
 
 Example usage
@@ -72,7 +73,7 @@ Example usage
     atom.plot_logderiv(show=True)
     
     # Export the atomic dataset
-    atom.export('./')
+    atom.export('.')
 
 
 License
