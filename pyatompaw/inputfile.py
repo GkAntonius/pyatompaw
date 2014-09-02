@@ -100,7 +100,6 @@ class AtompawInput(object):
         'Eloc',
         'Vloc_scheme',
         'configurations',
-        'output_format',
         'coreWF_keyword',
         'proj_optim_keyword',
         'comp_in_xc_keyword',
