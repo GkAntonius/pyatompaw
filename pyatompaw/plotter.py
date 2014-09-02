@@ -27,6 +27,7 @@ class AtompawPlotter:
                 Number of projector for each angular momentum quantum number.
             show: bool, optional
         """
+
         fig = plt.figure(figsize=(18,14))
         Nlines = len(Nproj)
         Ncols = max(Nproj)
@@ -146,7 +147,7 @@ def show_wfn(fname):
     plot_wfn(fname, ax)
     plt.show()
 
-def plot_wfn(fname, ax, legend=False, legloc='lower right'):
+def plot_wfn(fname, ax, legend=True, legloc='best'):
 
     wfnfile = DataFile(fname)
     with open(fname, 'r') as f:
@@ -163,7 +164,10 @@ def plot_wfn(fname, ax, legend=False, legloc='lower right'):
     ax.plot(r, pspwave, label='pseudo wave', linestyle='-', **style)
     ax.plot(r, proj, label='projector', linestyle='--', **style)
     if legend:
-        ax.legend(loc=legloc)
+        ax.legend(loc=legloc, fancybox=True, shadow=True)
+
+
+
 
 def plot_logderiv(fname, ax, legend=False, legloc='lower right', title=''):
 
