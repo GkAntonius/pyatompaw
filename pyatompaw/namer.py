@@ -92,17 +92,19 @@ class AtompawNamer(object):
         """Name of a tprod file containing q, q**2 * p(q) * phitw(q)"""
         return join(self.dirname, 'tprod.' + str(i))
 
-    def find_abinit_output(self):
+    def find_output(self):
         """
-        Find the paw file output for abinit.
+        Find the paw file output for abinit or xml.
 
         Raises:
             LookupError
         """
         for fname in os.listdir(self.dirname):
-            if fname.endswith('paw.abinit'):
+            if fname.endswith('paw.abinit') or fname.endswith('paw.xml'):
                 return join(self.dirname, fname)
         raise LookupError('No abinit output found.')
+
+
 
     def make_pseudo_name(self, Z, symbol, keywords='', extension='pawps',
                          directory=None):
