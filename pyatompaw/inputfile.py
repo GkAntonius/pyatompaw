@@ -431,11 +431,6 @@ class AtompawInput(object):
             add('2\n')
             line = ''
 
-            file = open('DEBUG.txt','w')
-            print >> file, self.comp_in_XC_keyword
-            file.close()
-
-
             for kw in (self.coreWF_keyword, self.proj_optim_keyword,
                        self.comp_in_XC_keyword, self.reduced_grid_keyword):
                 line = add_keyword(line, kw)
