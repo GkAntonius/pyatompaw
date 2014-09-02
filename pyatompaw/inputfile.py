@@ -62,6 +62,7 @@ class AtompawInput(object):
         Choices:
             2, 'abinit'
             3, 'pwscf'
+            4, 'xml'
 
     coreWF_keyword: str
 
