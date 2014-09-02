@@ -68,7 +68,7 @@ class AtompawInput(object):
 
     proj_optim_keyword: str
 
-    comp_in_xc_keyword: str
+    comp_in_XC_keyword: str
 
     reduced_grid_keyword: str
 
@@ -103,7 +103,7 @@ class AtompawInput(object):
         'configurations',
         'coreWF_keyword',
         'proj_optim_keyword',
-        'comp_in_xc_keyword',
+        'comp_in_XC_keyword',
         'reduced_grid_keyword',
         'upf_grid_keywords',
         'nproj',
@@ -430,6 +430,12 @@ class AtompawInput(object):
         if str(self.output_format).lower() in ('2', 'abinit'):
             add('2\n')
             line = ''
+
+            file = open('DEBUG.txt','w')
+            print >> file, self.comp_in_XC_keyword
+            file.close()
+
+
             for kw in (self.coreWF_keyword, self.proj_optim_keyword,
                        self.comp_in_XC_keyword, self.reduced_grid_keyword):
                 line = add_keyword(line, kw)
