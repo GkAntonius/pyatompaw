@@ -441,6 +441,15 @@ class AtompawInput(object):
                 line = add_keyword(line, kw)
             if line:
                 add(line + '\n')
+        elif str(self.output_format).lower() in ('4', 'xml'):
+            add('4\n')
+            line = ''
+            for kw in (self.coreWF_keyword, self.proj_optim_keyword,
+                       self.comp_in_XC_keyword, self.reduced_grid_keyword):
+                line = add_keyword(line, kw)
+            if line:
+                add(line + '\n')
+
         else:
             raise ValueError("Output format not recognized")
                 
