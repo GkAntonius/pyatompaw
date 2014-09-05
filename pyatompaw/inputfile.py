@@ -246,8 +246,12 @@ class AtompawInput(object):
             if len(self._rc_val) > l:
                 rn = zip(self._rc_val[l], self._val_n[l])
                 rn = sorted(rn, cmp=lambda x,y: cmp(x[1],y[1]))
-                rc_val, ns = zip(*rn)
-                rc[l].extend(rc_val)
+
+                if rn != []:
+                    # It is possible that the user will not define any valence state for a channel;
+                    # only add a core value if there is a valence state. 
+                    rc_val, ns = zip(*rn)
+                    rc[l].extend(rc_val)
             rc[l].extend(self._rc_add[l])
         return rc
 
