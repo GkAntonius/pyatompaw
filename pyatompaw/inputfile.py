@@ -460,7 +460,7 @@ class AtompawInput(object):
             raise ValueError("Output format not recognized")
                 
         # End of the file
-        add('\n0\n')
+        add('0')
 
     def write(self):
 
