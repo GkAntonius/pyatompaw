@@ -67,7 +67,7 @@ class AtompawLauncher(object):
         if directory is not None:
             self.namer.export_directory = directory
 
-        source = self.namer.find_abinit_output()
+        source = self.namer.find_output()
         dest = self.namer.export_name
 
         subp.call(['cp', source, dest])

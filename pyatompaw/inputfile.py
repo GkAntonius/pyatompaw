@@ -62,12 +62,13 @@ class AtompawInput(object):
         Choices:
             2, 'abinit'
             3, 'pwscf'
+            4, 'xml'
 
     coreWF_keyword: str
 
     proj_optim_keyword: str
 
-    comp_in_xc_keyword: str
+    comp_in_XC_keyword: str
 
     reduced_grid_keyword: str
 
@@ -100,10 +101,9 @@ class AtompawInput(object):
         'Eloc',
         'Vloc_scheme',
         'configurations',
-        'output_format',
         'coreWF_keyword',
         'proj_optim_keyword',
-        'comp_in_xc_keyword',
+        'comp_in_XC_keyword',
         'reduced_grid_keyword',
         'upf_grid_keywords',
         'nproj',
@@ -246,8 +246,12 @@ class AtompawInput(object):
             if len(self._rc_val) > l:
                 rn = zip(self._rc_val[l], self._val_n[l])
                 rn = sorted(rn, cmp=lambda x,y: cmp(x[1],y[1]))
-                rc_val, ns = zip(*rn)
-                rc[l].extend(rc_val)
+
+                if rn != []:
+                    # It is possible that the user will not define any valence state for a channel;
+                    # only add a core value if there is a valence state. 
+                    rc_val, ns = zip(*rn)
+                    rc[l].extend(rc_val)
             rc[l].extend(self._rc_add[l])
         return rc
 
@@ -430,6 +434,7 @@ class AtompawInput(object):
         if str(self.output_format).lower() in ('2', 'abinit'):
             add('2\n')
             line = ''
+
             for kw in (self.coreWF_keyword, self.proj_optim_keyword,
                        self.comp_in_XC_keyword, self.reduced_grid_keyword):
                 line = add_keyword(line, kw)
@@ -442,11 +447,20 @@ class AtompawInput(object):
                 line = add_keyword(line, kw)
             if line:
                 add(line + '\n')
+        elif str(self.output_format).lower() in ('4', 'xml'):
+            add('4\n')
+            line = ''
+            for kw in (self.coreWF_keyword, self.proj_optim_keyword,
+                       self.comp_in_XC_keyword, self.reduced_grid_keyword):
+                line = add_keyword(line, kw)
+            if line:
+                add(line + '\n')
+
         else:
             raise ValueError("Output format not recognized")
                 
         # End of the file
-        add('\n0\n')
+        add('0')
 
     def write(self):
 
